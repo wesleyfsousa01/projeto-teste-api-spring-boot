@@ -15,7 +15,7 @@ public class ItemVenda implements Serializable {
     private static final long serialVersionUID =1l;
 
     @EmbeddedId
-    private ItemVendaPK id;
+    private ItemVendaPK id = new ItemVendaPK();
 
     private Integer qtd;
 
