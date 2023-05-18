@@ -26,7 +26,7 @@ public class Venda implements Serializable {
     private Vendedor vendedor;
 
     @OneToMany(mappedBy = "id.venda", fetch = FetchType.LAZY)
-    private Set<ItemVenda> itens = new HashSet<>();
+    private Set<ItemVenda> listaDeItens = new HashSet<>();
 
     public Venda() {
     }
@@ -60,8 +60,16 @@ public class Venda implements Serializable {
         this.vendedor = vendedor;
     }
 
-    public Set<ItemVenda> getItens() {
-        return itens;
+    public Set<ItemVenda> getListaDeItens() {
+        return listaDeItens;
+    }
+
+    public Double getTotal(){
+        double soma = 0;
+        for(ItemVenda i: listaDeItens){
+            soma += i.getPreco() * i.getQtd();
+        }
+        return soma;
     }
 
     @Override

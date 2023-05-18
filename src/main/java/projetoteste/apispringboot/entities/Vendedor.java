@@ -3,6 +3,8 @@ package projetoteste.apispringboot.entities;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
+import java.time.Duration;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -17,7 +19,7 @@ public class Vendedor implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String name;
+    private String nome;
 
     private String cpf;
 
@@ -30,7 +32,7 @@ public class Vendedor implements Serializable {
     }
 
     public Vendedor(String name, String cpf, String email) {
-        this.name = name;
+        this.nome = name;
         this.cpf = cpf;
         this.email = email;
     }
@@ -43,12 +45,12 @@ public class Vendedor implements Serializable {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getNome() {
+        return nome;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public String getCpf() {
@@ -69,6 +71,19 @@ public class Vendedor implements Serializable {
 
     public List<Venda> getListaDeVendas() {
         return listaDeVendas;
+    }
+
+    public Double getTotalDeVendasNoPeriodo(LocalDateTime min, LocalDateTime max){
+        Duration intervalo = Duration.between(min,max);
+        var intervaloEmDias = intervalo.toDays();
+
+        double total = 0;
+        for(Venda venda: listaDeVendas){
+            if(venda.getData().isAfter(min) && venda.getData().isBefore(max))
+                total += venda.getTotal();
+
+        }
+        return total;
     }
 
     @Override

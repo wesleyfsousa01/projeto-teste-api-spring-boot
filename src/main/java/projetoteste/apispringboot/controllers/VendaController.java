@@ -18,7 +18,12 @@ public class VendaController {
 
     @PostMapping
     public ResponseEntity<?> insert(@RequestBody VendaDTO vendaDTO){
+
+        try {
             VendaDTO objDTO = vendaService.saveDTO(vendaDTO);
             return ResponseEntity.ok().body(objDTO);
+        }catch (RuntimeException e){
+            return ResponseEntity.badRequest().body(e);
+        }
     }
 }
