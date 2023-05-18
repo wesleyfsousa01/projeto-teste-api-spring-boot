@@ -1,5 +1,6 @@
 package projetoteste.apispringboot.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
@@ -19,6 +20,7 @@ public class Venda implements Serializable {
 
     private LocalDateTime data;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "vendedor_id")
     private Vendedor vendedor;

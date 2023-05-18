@@ -1,4 +1,4 @@
-package projetoteste.apispringboot.data;
+package projetoteste.apispringboot.database;
 
 import org.fluttercode.datafactory.impl.DataFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,10 +8,10 @@ import projetoteste.apispringboot.entities.ItemVenda;
 import projetoteste.apispringboot.entities.Produto;
 import projetoteste.apispringboot.entities.Venda;
 import projetoteste.apispringboot.entities.Vendedor;
-import projetoteste.apispringboot.service.ItemVendaService;
-import projetoteste.apispringboot.service.ProdutoService;
-import projetoteste.apispringboot.service.VendaService;
-import projetoteste.apispringboot.service.VendedorService;
+import projetoteste.apispringboot.services.ItemVendaService;
+import projetoteste.apispringboot.services.ProdutoService;
+import projetoteste.apispringboot.services.VendaService;
+import projetoteste.apispringboot.services.VendedorService;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;

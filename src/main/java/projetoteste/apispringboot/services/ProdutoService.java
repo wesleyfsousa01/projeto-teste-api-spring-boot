@@ -1,11 +1,10 @@
-package projetoteste.apispringboot.service;
+package projetoteste.apispringboot.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import projetoteste.apispringboot.entities.Produto;
-import projetoteste.apispringboot.entities.Vendedor;
-import projetoteste.apispringboot.repository.ProdutoRepository;
-import projetoteste.apispringboot.repository.VendedorRepository;
+import projetoteste.apispringboot.repositories.ProdutoRepository;
+import projetoteste.apispringboot.services.exceptions.ObjectNotFoundException;
 
 import java.util.List;
 
@@ -14,6 +13,11 @@ public class ProdutoService {
 
     @Autowired
     private ProdutoRepository produtoRepository;
+
+    public Produto findById(Long id){
+        return produtoRepository.findById(id).orElseThrow(() -> new ObjectNotFoundException(id));
+    }
+
 
     public Produto save(Produto produto){
        return produtoRepository.save(produto);

@@ -1,9 +1,9 @@
-package projetoteste.apispringboot.service;
+package projetoteste.apispringboot.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import projetoteste.apispringboot.entities.ItemVenda;
-import projetoteste.apispringboot.repository.ItemVendaRepository;
+import projetoteste.apispringboot.repositories.ItemVendaRepository;
 
 import java.util.List;
 

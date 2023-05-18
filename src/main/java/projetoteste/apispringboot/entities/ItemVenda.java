@@ -1,5 +1,6 @@
 package projetoteste.apispringboot.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
@@ -31,6 +32,7 @@ public class ItemVenda implements Serializable {
         this.preco = preco;
     }
 
+    @JsonIgnore
     public Venda getVenda(){
         return id.getVenda();
     }
@@ -63,8 +65,8 @@ public class ItemVenda implements Serializable {
         this.preco = preco;
     }
 
-    public ItemVendaPK getId() {
-        return id;
+    public Double getSubTotal(){
+        return preco * qtd;
     }
 
     @Override

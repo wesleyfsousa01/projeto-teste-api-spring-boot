@@ -24,7 +24,7 @@ public class Vendedor implements Serializable {
     private String email;
 
     @OneToMany(mappedBy = "vendedor", fetch = FetchType.LAZY)
-    List<Venda> vendas = new ArrayList<>();
+    List<Venda> listaDeVendas = new ArrayList<>();
 
     public Vendedor() {
     }
@@ -67,8 +67,8 @@ public class Vendedor implements Serializable {
         this.email = email;
     }
 
-    public List<Venda> getVendas() {
-        return vendas;
+    public List<Venda> getListaDeVendas() {
+        return listaDeVendas;
     }
 
     @Override
