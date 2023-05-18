@@ -35,13 +35,13 @@ public class VendaService {
     }
 
     @Transactional
-    public VendaDTO saveDTO(VendaDTO objDTO){
+    public VendaDTO saveDTO(VendaDTO objDto){
         try {
-            Vendedor vendedor = vendedorService.findById(objDTO.getVendedorId());
+            Vendedor vendedor = vendedorService.findById(objDto.getVendedorId());
             Venda venda = new Venda(LocalDateTime.now(), vendedor);
             vendaRepository.save(venda);
 
-            var itensSalvos = objDTO.getListaDeItens().stream().map(itemVenda -> {
+            var itensSalvos = objDto.getListaDeItens().stream().map(itemVenda -> {
                 itemVenda.setVenda(venda);
                 itemVenda.setProduto(produtoService.findById(itemVenda.getProduto().getId()));
                 itemVenda.setPreco(itemVenda.getProduto().getPreco());

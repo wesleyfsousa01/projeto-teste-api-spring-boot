@@ -10,8 +10,7 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity
-
-public class Vendedor implements Serializable {
+public class Vendedor implements Serializable{
 
     private static final long serialVersionUID =1l;
 
@@ -75,7 +74,6 @@ public class Vendedor implements Serializable {
 
     public Double getTotalDeVendasNoPeriodo(LocalDateTime min, LocalDateTime max){
         Duration intervalo = Duration.between(min,max);
-        var intervaloEmDias = intervalo.toDays();
 
         double total = 0;
         for(Venda venda: listaDeVendas){

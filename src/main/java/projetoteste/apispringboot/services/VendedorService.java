@@ -2,6 +2,7 @@ package projetoteste.apispringboot.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import projetoteste.apispringboot.services.util.URLConverter;
 import projetoteste.apispringboot.dto.VendedorDTO;
 import projetoteste.apispringboot.entities.Venda;
 import projetoteste.apispringboot.entities.Vendedor;
@@ -33,7 +34,11 @@ public class VendedorService {
         return vendedorRepository.saveAll(listaDeVendedores);
     }
 
-    public List<VendedorDTO> obterVendasPorPeriodo(LocalDate min, LocalDate max) {
+    public List<VendedorDTO> obterVendasPorPeriodo(String minString, String maxString) {
+
+        LocalDate min =  URLConverter.converterData(minString);
+        LocalDate max = URLConverter.converterData(maxString);
+
         LocalDateTime minDate = min.atTime(LocalTime.MIN);
         LocalDateTime maxDate = max.atTime(LocalTime.MAX);
 
@@ -44,7 +49,6 @@ public class VendedorService {
         List<VendedorDTO> listaVendedoresDTO = new ArrayList<>();
 
         for (Vendedor vendedor : listaVendedores) {
-
 
             int totalDeVendas = 0;
 

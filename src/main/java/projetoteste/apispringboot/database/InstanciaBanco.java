@@ -86,6 +86,7 @@ public class InstanciaBanco implements CommandLineRunner {
 
         //Gerando Itens e relacionando-os ás vendas geradas
         for (int i=0; i<= 10; i++){
+
             //Seleciona uma, dentre as vendas, a cada iteração:
             int index = (int) (Math.random() * listaDeVendas.size());
             Venda venda = listaDeVendas.get(index);

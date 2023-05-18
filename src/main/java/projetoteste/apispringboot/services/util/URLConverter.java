@@ -1,11 +1,11 @@
-package projetoteste.apispringboot.controllers.util;
+package projetoteste.apispringboot.services.util;
 
 import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 
 public class URLConverter {
-    public static LocalDate converterData(String dateString) throws DateTimeException {
+    public static LocalDate converterData(String dateString){
         try{
             LocalDate date = LocalDate.parse(dateString);
 
