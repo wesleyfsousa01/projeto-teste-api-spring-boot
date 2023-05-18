@@ -1,13 +1,20 @@
 package projetoteste.apispringboot.entities;
 
+import jakarta.persistence.EmbeddedId;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 import projetoteste.apispringboot.entities.pk.ItemVendaPK;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class ItemVenda {
+@Entity
+@Table(name = "item_venda")
+public class ItemVenda implements Serializable {
 
     private static final long serialVersionUID =1l;
 
+    @EmbeddedId
     private ItemVendaPK id;
 
     private Integer qtd;
