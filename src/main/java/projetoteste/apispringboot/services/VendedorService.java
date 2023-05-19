@@ -9,6 +9,7 @@ import projetoteste.apispringboot.entities.Vendedor;
 import projetoteste.apispringboot.repositories.VendedorRepository;
 import projetoteste.apispringboot.services.exceptions.ObjectNotFoundException;
 
+import java.text.DecimalFormat;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -42,25 +43,28 @@ public class VendedorService {
         LocalDateTime minDate = min.atTime(LocalTime.MIN);
         LocalDateTime maxDate = max.atTime(LocalTime.MAX);
 
-        Duration intervalo = Duration.between(minDate,maxDate);
-        var intervaloEmDias = intervalo.toDays();
+        var intervaloEmdias = Duration.between(minDate,maxDate).toDays();
 
-        List<Vendedor> listaVendedores = vendedorRepository.findAll();
-        List<VendedorDTO> listaVendedoresDTO = new ArrayList<>();
+        List<Vendedor> listaDeVendedores = vendedorRepository.findAll();
+        List<VendedorDTO> listaDeVendedoresDto = new ArrayList<>();
 
-        for (Vendedor vendedor : listaVendedores) {
+        for (Vendedor vendedor : listaDeVendedores) {
 
             int totalDeVendas = 0;
+            double soma = 0;
 
             for (Venda venda : vendedor.getListaDeVendas()) {
                 if(venda.getData().isAfter(minDate) && venda.getData().isBefore(maxDate))
                     totalDeVendas++;
+                    soma += venda.getTotal();
             }
 
-            listaVendedoresDTO.add(new VendedorDTO(vendedor.getNome(), totalDeVendas, vendedor.getTotalDeVendasNoPeriodo(minDate,maxDate)));
+            DecimalFormat decimalFormat = new DecimalFormat("#,##0.00");
+            double mediaVendedor  = intervaloEmdias >0 ? soma/intervaloEmdias : soma;
+
+            listaDeVendedoresDto.add(new VendedorDTO(vendedor.getNome(), totalDeVendas, decimalFormat.format(mediaVendedor)));
         }
 
-        return listaVendedoresDTO;
+        return listaDeVendedoresDto;
     }
-
 }

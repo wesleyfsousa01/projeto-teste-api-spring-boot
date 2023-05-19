@@ -69,37 +69,37 @@ public class InstanciaBanco implements CommandLineRunner {
         List<Venda> listaDeVendas = new ArrayList<>();
         List<ItemVenda> listaDeItens = new ArrayList<>();
 
-        //Gerando vendas aleatórias
-        for (int i=0; i<= 10; i++){
-
-            var itemAleatorio = (Math.random() * listaDeVendedores.size());
-
-            int index = (int) itemAleatorio;
-            Date intervalo = df.getDateBetween(minDate,maxDate);
-            LocalDateTime localDateTime = intervalo.toInstant().atZone( ZoneId.systemDefault() ).toLocalDateTime();
-            listaDeVendas.add(new Venda( localDateTime,listaDeVendedores.get(index)));
-
-        }
-
-        //inserindo Vendas geradas
-        vendaService.saveAll(listaDeVendas);
-
-        //Gerando Itens e relacionando-os ás vendas geradas
-        for (int i=0; i<= 10; i++){
-
-            //Seleciona uma, dentre as vendas, a cada iteração:
-            int index = (int) (Math.random() * listaDeVendas.size());
-            Venda venda = listaDeVendas.get(index);
-
-            //Seleciona um, dentre os produtos, a cada iteração:
-            int index2 = (int) (Math.random() * listaDeProdutos.size());
-            Produto produto = listaDeProdutos.get(index2);
-
-            //Adiciona a lista de itens cada item, gerado aleatóriamente:
-            listaDeItens.add(new ItemVenda(venda, produto, df.getNumberBetween(1,5), produto.getPreco()));
-        }
-        //salvando itens gerados
-        itemVendaService.saveAll(listaDeItens);
+//        //Gerando vendas aleatórias
+//        for (int i=0; i<= 10; i++){
+//
+//            var itemAleatorio = (Math.random() * listaDeVendedores.size());
+//
+//            int index = (int) itemAleatorio;
+//            Date intervalo = df.getDateBetween(minDate,maxDate);
+//            LocalDateTime localDateTime = intervalo.toInstant().atZone( ZoneId.systemDefault() ).toLocalDateTime();
+//            listaDeVendas.add(new Venda( localDateTime,listaDeVendedores.get(index)));
+//
+//        }
+//
+//        //inserindo Vendas geradas
+//        vendaService.saveAll(listaDeVendas);
+//
+//        //Gerando Itens e relacionando-os ás vendas geradas
+//        for (int i=0; i<= 10; i++){
+//
+//            //Seleciona uma, dentre as vendas, a cada iteração:
+//            int index = (int) (Math.random() * listaDeVendas.size());
+//            Venda venda = listaDeVendas.get(index);
+//
+//            //Seleciona um, dentre os produtos, a cada iteração:
+//            int index2 = (int) (Math.random() * listaDeProdutos.size());
+//            Produto produto = listaDeProdutos.get(index2);
+//
+//            //Adiciona a lista de itens cada item, gerado aleatóriamente:
+//            listaDeItens.add(new ItemVenda(venda, produto, df.getNumberBetween(1,5), produto.getPreco()));
+//        }
+//        //salvando itens gerados
+//        itemVendaService.saveAll(listaDeItens);
 
     }
 

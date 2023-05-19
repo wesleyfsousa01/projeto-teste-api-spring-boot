@@ -3,8 +3,6 @@ package projetoteste.apispringboot.entities;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
-import java.time.Duration;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -70,18 +68,6 @@ public class Vendedor implements Serializable{
 
     public List<Venda> getListaDeVendas() {
         return listaDeVendas;
-    }
-
-    public Double getTotalDeVendasNoPeriodo(LocalDateTime min, LocalDateTime max){
-        Duration intervalo = Duration.between(min,max);
-
-        double total = 0;
-        for(Venda venda: listaDeVendas){
-            if(venda.getData().isAfter(min) && venda.getData().isBefore(max))
-                total += venda.getTotal();
-
-        }
-        return total;
     }
 
     @Override

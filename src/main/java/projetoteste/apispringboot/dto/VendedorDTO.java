@@ -6,9 +6,9 @@ public class VendedorDTO {
 
     private Integer totalDeVendas;
 
-    private Double mediaVendasDia;
+    private String mediaVendasDia;
 
-    public VendedorDTO(String nome, Integer totalVendas, Double mediaVendasDia) {
+    public VendedorDTO(String nome, Integer totalVendas, String mediaVendasDia) {
         this.nome = nome;
         this.totalDeVendas = totalVendas;
         this.mediaVendasDia = mediaVendasDia;
@@ -30,11 +30,11 @@ public class VendedorDTO {
         this.totalDeVendas = totalDeVendas;
     }
 
-    public Double getMediaVendasDia() {
+    public String getMediaVendasDia() {
         return mediaVendasDia;
     }
 
-    public void setMediaVendasDia(Double mediaVendasDia) {
+    public void setMediaVendasDia(String mediaVendasDia) {
         this.mediaVendasDia = mediaVendasDia;
     }
 }
