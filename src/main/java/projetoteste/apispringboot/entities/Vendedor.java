@@ -22,7 +22,7 @@ public class Vendedor implements Serializable{
 
     private String email;
 
-    @OneToMany(mappedBy = "vendedor", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "vendedor", fetch = FetchType.EAGER)
     List<Venda> listaDeVendas = new ArrayList<>();
 
     public Vendedor() {
