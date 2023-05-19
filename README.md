@@ -54,8 +54,7 @@ Pré-requisitos:
 # clonar repositório
 git clone https://github.com/wesleyfsousa01/projeto-teste-api-spring-boot.git
 
-# /projeto-teste-api-spring-boot
-cd worshop-spring-boot-mongoDB
+# cd /projeto-teste-api-spring-boot
 
 # executar o projeto
 mvn spring-boot:run
