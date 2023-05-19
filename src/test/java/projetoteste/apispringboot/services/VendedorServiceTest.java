@@ -5,8 +5,10 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
+import org.springframework.transaction.annotation.Transactional;
 import projetoteste.apispringboot.dto.VendedorDTO;
 import projetoteste.apispringboot.entities.ItemVenda;
 import projetoteste.apispringboot.entities.Produto;
@@ -22,6 +24,8 @@ import java.util.List;
 @SpringBootTest
 @RunWith(SpringRunner.class)
 @WebAppConfiguration
+@Transactional
+@ActiveProfiles("test")
 public class VendedorServiceTest {
 
     @Autowired
@@ -73,6 +77,7 @@ public class VendedorServiceTest {
         Assert.assertEquals(listaDeVendedores,listaDeVendedoresSalvos);
     }
 
+    //Este ultimo teste não rodou devido a um erro de relacionamento do JPA que não consegui resolver:
     @Test
     public void obterVendasPorPeriodo(){
         Vendedor vendedor = new Vendedor("Pedro","222.333.444-55","pedro@gmail.com");

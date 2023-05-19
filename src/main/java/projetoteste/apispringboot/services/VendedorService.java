@@ -54,9 +54,10 @@ public class VendedorService {
             double soma = 0;
 
             for (Venda venda : vendedor.getListaDeVendas()) {
-                if(venda.getData().isAfter(minDate) && venda.getData().isBefore(maxDate))
+                if(venda.getData().isAfter(minDate) && venda.getData().isBefore(maxDate)){
                     totalDeVendas++;
                     soma += venda.getTotal();
+                }
             }
 
             DecimalFormat decimalFormat = new DecimalFormat("#,##0.00");

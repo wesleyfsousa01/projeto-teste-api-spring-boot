@@ -25,7 +25,7 @@ public class Venda implements Serializable {
     @JoinColumn(name = "vendedor_id")
     private Vendedor vendedor;
 
-    @OneToMany(mappedBy = "id.venda", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "id.venda", fetch = FetchType.LAZY)
     private Set<ItemVenda> listaDeItens = new HashSet<>();
 
     public Venda() {
